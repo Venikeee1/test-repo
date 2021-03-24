@@ -2,6 +2,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const paths = require('../utils/paths');
+const Handlebars = require('handlebars');
+Handlebars.registerHelper('times', function (n, block) {
+  var accum = '';
+  for (var i = 0; i < n; ++i) accum += block.fn(i);
+  return accum;
+});
 
 module.exports = env => ({
   mode: env.mode,
